@@ -6,6 +6,22 @@ cc_library (
   visibility = ["//visibility:private"],
 )
 
+# soci must be built with -DWITH_MYSQL=ON for this to work
+cc_library (
+  name = "mysql",
+  deps = [":core"],
+  linkopts = ["-lsoci_mysql"],
+  visibility = ["//visibility:public"],
+)
+
+# soci must be built with -DWITH_POSTGRESQL=ON for this to work
+cc_library (
+  name = "postgresql",
+  deps = [":core"],
+  linkopts = ["-lsoci_postgresql"],
+  visibility = ["//visibility:public"],
+)
+
 # soci must be built with -DWITH_SQLITE3=ON for this to work
 cc_library (
   name = "sqlite3",

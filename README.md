@@ -5,7 +5,12 @@
 This does not handle building SOCI itself with Bazel, it only links to the local
 SOCI installation on the system.
 
+Everything below assumes the correct libraries and headers are present on the
+system.
+
 ## Usage
+
+An example can be found [here](https://github.com/nathanws/bazel-examples/tree/master/soci).
 
 In the root Bazel `WORKSPACE` file, add the following:
 
@@ -27,7 +32,9 @@ bind (
 )
 ```
 
-Then add the target as a dependency in the necessary `BUILD` file:
+Currently, only targets for `sqlite3`, `mysql`, and `postgresql` exist.
+
+Add the target as a dependency in the necessary `BUILD` file:
 
 ```
 cc_binary (
